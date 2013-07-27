@@ -597,7 +597,7 @@ static void android_location_GpsLocationProvider_agps_data_conn_open(JNIEnv* env
         return;
     }
     const char *apnStr = env->GetStringUTFChars(apn, NULL);
-    sAGpsInterface->data_conn_open(apnStr);
+    sAGpsInterface->data_conn_open(0, apnStr, 0);
     env->ReleaseStringUTFChars(apn, apnStr);
 }
 
@@ -607,7 +607,7 @@ static void android_location_GpsLocationProvider_agps_data_conn_closed(JNIEnv* e
         ALOGE("no AGPS interface in agps_data_conn_closed");
         return;
     }
-    sAGpsInterface->data_conn_closed();
+    sAGpsInterface->data_conn_closed(0);
 }
 
 static void android_location_GpsLocationProvider_agps_data_conn_failed(JNIEnv* env, jobject obj)
@@ -616,7 +616,7 @@ static void android_location_GpsLocationProvider_agps_data_conn_failed(JNIEnv* e
         ALOGE("no AGPS interface in agps_data_conn_failed");
         return;
     }
-    sAGpsInterface->data_conn_failed();
+    sAGpsInterface->data_conn_failed(0);
 }
 
 static void android_location_GpsLocationProvider_set_agps_server(JNIEnv* env, jobject obj,
